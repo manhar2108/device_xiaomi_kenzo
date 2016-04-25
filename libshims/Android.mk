@@ -23,3 +23,15 @@ LOCAL_MODULE := libshim_parcel
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
 include $(BUILD_SHARED_LIBRARY)
+
+# libmdmcutback
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+    xiaomi_mdmcutback.c
+
+LOCAL_MODULE := libshim_mdmcutback
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
