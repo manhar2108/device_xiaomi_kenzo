@@ -21,6 +21,10 @@ namespace android {
 
 extern "C" {
 
+void RIL_register_socket(void *Init, int socketType, int argc, char **argv)
+{
+}
+
 #ifdef __aarch64__
     // C++11 Parcel::writeString16(const char16_t* str, size_t len)
     status_t _ZN7android6Parcel13writeString16EPKDsm(const char16_t* str, size_t len);

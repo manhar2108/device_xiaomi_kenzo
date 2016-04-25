@@ -164,7 +164,8 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libshim_parcel
+    libshim_parcel \
+	xiaomi_mdmcutback
 
 # Power
 PRODUCT_PACKAGES += \
