@@ -164,8 +164,10 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    libcnefeatureconfig \
+    librmnetctl \
     libshim_parcel \
-	xiaomi_mdmcutback
+    xiaomi_mdmcutback
 
 # Power
 PRODUCT_PACKAGES += \
