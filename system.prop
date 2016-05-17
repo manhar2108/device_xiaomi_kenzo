@@ -20,6 +20,8 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
+#You can try this delete #
+#persist.radio.always_send_plmn=true
 
 debug.sf.hw=0
 debug.egl.hw=0
@@ -163,6 +165,12 @@ persist.debug.coresight.config=stm-events
 #property for vendor specific library
 ro.vendor.at_library=libqti-at.so
 ro.vendor.gt_library=libqti-gt.so
+
+#sensors
+ro.qti.sensors.bte=true
+ro.qti.sensors.gtap=true
+ro.qti.sensors.vmd=true
+ro.qti.sensors.smd=true
 
 #property to enable narrow search range for video encoding
 vidc.enc.narrow.searchrange=1
