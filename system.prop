@@ -8,7 +8,7 @@ ro.telephony.ril.config=simactivation
 ro.com.android.mobiledata=false
 ro.config.always_show_roaming=true
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
-rild.libpath=/system/lib/libril-qc-qmi-1.so
+#rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 ro.use_data_netmgrd=true
 persist.radio.apm_sim_not_pwdn=1
@@ -30,6 +30,13 @@ ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 #You can try this delete #
 #persist.radio.always_send_plmn=true
+#for manul search network display 2G/3G/4G
+persist.radio.rat_on=combine
+ro.data.large_tcp_window_size=true
+#PPPOE config enable
+ro.config.pppoe_enable=1
+# Enable OEM SOCKET I don't really know if it works
+persist.radio.oem_socket=true
 
 debug.sf.hw=0
 debug.egl.hw=0
