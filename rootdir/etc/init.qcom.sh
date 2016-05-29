@@ -132,6 +132,7 @@ case "$baseband" in
 esac
 
 start_sensors
+start_copying_prebuilt_qcril_db
 
 if [ -f /sys/class/graphics/fb0/modes ]; then
 	panel_res=`cat /sys/class/graphics/fb0/modes`
@@ -301,7 +302,7 @@ case "$target" in
                             ;;
                        "MTP")
                             case "$platform_subtype_id" in
-                                 "0")
+                                 "0" | "1")
                                       setprop qemu.hw.mainkeys 0
                                       ;;
                             esac
@@ -337,7 +338,8 @@ case "$target" in
                             ;;
                        "MTP")
                             case "$platform_subtype_id" in
-                                 "0")
+                                 "0" | "1")
+                                      setprop qemu.hw.mainkeys 1
                                       ;;
                             esac
                             ;;
@@ -372,7 +374,7 @@ case "$target" in
                             ;;
                        "MTP")
                             case "$platform_subtype_id" in
-                                 "0")
+                                 "0" | "1")
                                       setprop qemu.hw.mainkeys 0
                                       ;;
                             esac
@@ -408,7 +410,7 @@ case "$target" in
                             ;;
                        "MTP")
                             case "$platform_subtype_id" in
-                                 "0")
+                                 "0" | "1")
                                       setprop qemu.hw.mainkeys 0
                                       ;;
                             esac
@@ -452,28 +454,14 @@ case "$emmc_boot"
 esac
 
 #
-# Copy qcril.db if needed for RIL
+# Make modem config folder and copy firmware config to that folder
 #
-start_copying_prebuilt_qcril_db
-echo 1 > /data/misc/radio/db_check_done
-
-#
-# Make modem config folder and copy firmware config to that folder for RIL
-#
-#rm -rf /data/misc/radio/modem_config
-if [ ! -f /data/misc/radio/modem_config ]; then
+rm -rf /data/misc/radio/modem_config
 mkdir /data/misc/radio/modem_config
-fi
-
 chmod 770 /data/misc/radio/modem_config
-
-cp /firmware/image/modem_pr/mcfg/configs/mcfg_sw/generic/china/cmcc/commerci/volte_op/mcfg_sw.mbn /data/misc/radio/modem_config/cmcc.mbn
-cp /firmware/image/modem_pr/mcfg/configs/mcfg_sw/generic/china/ct/commerci/openmkt/mcfg_sw.mbn /data/misc/radio/modem_config/ct.mbn
-cp /firmware/image/modem_pr/mcfg/configs/mcfg_sw/generic/china/cu/commerci/openmkt/mcfg_sw.mbn /data/misc/radio/modem_config/cu.mbn
-cp /firmware/image/modem_pr/mcfg/configs/mcfg_sw/generic/common/row/gen_3gpp/mcfg_sw.mbn /data/misc/radio/modem_config/row.mbn
-cp /firmware/image/modem_pr/mcfg/configs/mcfg_sw/generic/apac/reliance/commerci/mcfg_sw.mbn /data/misc/radio/modem_config/reliance.mbn
-cp /firmware/image/modem_pr/mcfg/configs/mcfg_sw/generic/sea/ytl/gen_3gpp/mcfg_sw.mbn /data/misc/radio/modem_config/ytl.mbn
-
-#cp -r /firmware/image/modem_pr/mbn_ota/* /data/misc/radio/modem_config
+cp -r /firmware/image/modem_pr/mcfg/configs/* /data/misc/radio/modem_config
 chown -hR radio.radio /data/misc/radio/modem_config
+cp /system/etc/mbn_ota.txt /data/misc/radio/modem_config
+chown radio.radio /data/misc/radio/modem_config/mbn_ota.txt
 echo 1 > /data/misc/radio/copy_complete
+chown radio:radio /data/misc/radio/copy_complete

@@ -15,4 +15,4 @@
 /devices/soc.0/7864900.sdhci/mmc_host*        auto   auto    defaults         voldmanaged=sdcard1:auto,encryptable=userdata
 /dev/block/zram0             none         swap    defaults zramsize=536870912
 /dev/block/bootdevice/by-name/config         /frp  emmc    defaults                                            defaults
-/devices/platform/msm_hsusb                  /storage/usbotg    vfat    nosuid,nodev         wait,voldmanaged=usbotg:auto
+/devices/platform/msm_hsusb*                  /storage/usbotg    vfat    nosuid,nodev         wait,voldmanaged=usbotg:auto,encryptable=footer
