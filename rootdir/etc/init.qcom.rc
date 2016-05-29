@@ -36,7 +36,7 @@ on early-init
 
 on init
 
-    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8952.so|libcamera_shim.so:/system/bin/mm-qcamera-daemon|libcamera_shim.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libcamera_shim.so:/system/vendor/lib64/libdpmframework.so|libshim_parcel.so:/system/vendor/lib64/libcne.so|libshim_parcel.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so"
+    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8952.so|libcamera_shim.so:/system/bin/mm-qcamera-daemon|libcamera_shim.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libcamera_shim.so:/system/vendor/lib/libril-qc-qmi-1.so|libshim_parcel.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so"
 	
     start qfintverify
     # Set permissions for persist partition
@@ -648,11 +648,9 @@ service qmuxd /system/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag
-    disabled
 
 service netmgrd /system/bin/netmgrd
     class main
-    disabled
 
 service ipacm-diag /system/bin/ipacm-diag
     class main
@@ -669,7 +667,6 @@ service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw qcom_diag usb net_admin
-    disabled
 
 service sensors /system/bin/sensors.qcom
     class late_start
