@@ -253,3 +253,11 @@ ro.build.device.ninur=64687
 #ad
 ro.qcom.ad=1
 ro.qcom.ad.calib.data=/data/misc/display/ad_calib.cfg
+
+# Hardware Info
+ro.device.chipset=Qualcomm MSM8956 Snapdragon 650
+ro.device.cpu=Quad-core 1.4 GHz Cortex-A53 & Dual-core 1.8 GHz Cortex-A72
+ro.device.gpu=Adreno 510
+ro.device.rear_cam=16 MP
+ro.device.front_cam=5.0 MP
+ro.device.screen_res=1080x1920
